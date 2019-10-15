@@ -1,0 +1,45 @@
+{
+  "name": "vintage-sverige",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "prettier": "prettier --write '**/*.{ts,js,css,html}'"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.1.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
