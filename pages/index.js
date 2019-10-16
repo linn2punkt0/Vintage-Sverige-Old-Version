@@ -1,32 +1,71 @@
-import React from 'react';
-import styled from 'styled-components';
-import Layout from '../Layout';
-import fetch from 'isomorphic-unfetch';
-
-const StyledIndex = styled.div`
-  font-weight: 600;
-`;
+import React, { Component, useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'isomorphic-unfetch';
+// import { firebaseConfig as clientCredentials } from '../firebase';
+import clientCredentials from '../credentials/client';
 
 const Index = props => {
-  //Here we will fetch from Firebase later
-  Index.getInitialProps = async function() {
-    // const res = await fetch(
-    //   "https://www.eventbriteapi.com/v3/events/search/?location.address=gothenburg&location.within=10km&token=3Y4CSNOSJ2GG2RK3UBW5"
-    // );
-    // const data = await res.json();
-    // const events = data.events;
-    // return {
-    //   //   events: data.map(e => e.event)
-    //   events
-    // };
+  const [user, setUser] = useState(null);
+
+  const componentDidMount = () => {
+    firebase.initializeApp(clientCredentials);
+
+    // On change, handle login/logout and update to server
+    firebase.auth().onAuthStateChanged(value => {
+      if (value) {
+        setUser(value);
+        return value.getIdToken().then(token => {
+          // eslint-disable-next-line no-undef
+          return fetch('/api/login', {
+            method: 'POST',
+            // eslint-disable-next-line no-undef
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            credentials: 'same-origin',
+            body: JSON.stringify({ token })
+          });
+        });
+      } else {
+        setUser(null);
+        // eslint-disable-next-line no-undef
+        fetch('/api/logout', {
+          method: 'POST',
+          credentials: 'same-origin'
+        });
+      }
+    });
   };
 
+  const handleLogin = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(
+        process.env.user_email,
+        process.env.user_password
+      );
+  };
+
+  const handleLogout = () => {
+    firebase.auth().signOut();
+  };
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    componentDidMount();
+  }, []);
+
+  console.log(user);
+
   return (
-    <StyledIndex>
-      <Layout>
-        <h1>Homepage</h1>
-      </Layout>
-    </StyledIndex>
+    <div>
+      {user ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <button onClick={handleLogin}>Login</button>
+      )}
+      {user && <h2>You are logged in</h2>}
+    </div>
   );
 };
 
