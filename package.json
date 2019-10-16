@@ -14,7 +14,8 @@
     "next": "^9.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "styled-modern-normalize": "^0.2.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
@@ -25,7 +26,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": ">=1",
     "lint-staged": ">=8",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "babel-eslint": "^10.0.3"
   },
   "husky": {
     "hooks": {
