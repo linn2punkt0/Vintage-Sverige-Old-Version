@@ -25,7 +25,16 @@ export default class MyApp extends App {
 
   componentDidMount() {
     if (!firebase.apps.length) {
-      firebase.initializeApp(clientCredentials);
+      firebase.initializeApp([
+        process.env.apiKey,
+        process.env.authDomain,
+        process.env.databaseURL,
+        process.env.projectId,
+        process.env.storageBucket,
+        process.env.messagingSenderId,
+        process.env.appId,
+        process.env.measurementId
+      ]);
     }
 
     // On change, handle login/logout and update to server

@@ -16,14 +16,16 @@ const firebase = admin.initializeApp(
   {
     // credential: admin.credential.cert(require('./credentials/server'))
     credential: admin.credential.cert([
-      process.env.apiKey,
-      process.env.authDomain,
-      process.env.databaseURL,
-      process.env.projectId,
-      process.env.storageBucket,
-      process.env.messagingSenderId,
-      process.env.appId,
-      process.env.measurementId
+      process.env.type,
+      process.env.project_id,
+      process.env.private_key_id,
+      process.env.private_key,
+      process.env.client_email,
+      process.env.client_id,
+      process.env.auth_uri,
+      process.env.token_uri,
+      process.env.auth_provider_x509_cert_url,
+      process.env.client_x509_cert_url
     ])
   },
   'server'
