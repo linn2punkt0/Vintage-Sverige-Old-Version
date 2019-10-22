@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 import GlobalStyle from './styles/GlobalStyle';
+import Nav from './components/Nav';
 
 const StyledLayout = styled.div``;
 
@@ -11,12 +11,7 @@ const Layout = props => {
     <>
       <GlobalStyle />
       <StyledLayout>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <Nav />
         <main>{children}</main>
       </StyledLayout>
     </>
