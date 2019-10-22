@@ -8,9 +8,9 @@ const admin = require('firebase-admin');
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-// const handle = app.getRequestHandler();
-const routes = require('./routes');
-const handler = routes.getRequestHandler(app);
+const handle = app.getRequestHandler();
+// const routes = require('./routes');
+// const handler = routes.getRequestHandler(app);
 
 const firebase = admin.initializeApp(
   {
@@ -60,11 +60,16 @@ app.prepare().then(() => {
     res.json({ status: true });
   });
 
-  // server.get('*', (req, res) => {
-  //   return handle(req, res);
+  server.get('*', (req, res) => {
+    return handle(req, res);
+  });
+
+  // server.use(handler).listen(port, err => {
+  //   if (err) throw err;
+  //   console.log(`> Ready on http://localhost:${port}`);
   // });
 
-  server.use(handler).listen(port, err => {
+  server.listen(port, err => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });

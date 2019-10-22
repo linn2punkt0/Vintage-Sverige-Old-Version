@@ -34,29 +34,35 @@ const Nav = () => {
         {/* <Link href="/index" as="/">
           <a>Startsida</a>
         </Link> */}
-        <Link href="/events" as="/event-och-massor">
+        {/* <Link href="/events" as="/event-och-massor"> */}
+        <Link href="/hitta-event">
           <a>Event & Mässor</a>
         </Link>
-        <Link href="/vintageschool" as="/vintageskola">
+        {/* <Link href="/vintageschool" as="/vintageskola"> */}
+        <Link href="/vintageskola">
           <a>Vintageskola</a>
         </Link>
-        <Link href="/materials" as="/material-och-tvattrad">
+        {/* <Link href="/materials" as="/material-och-tvattrad"> */}
+        <Link href="/material-och-tvattrad">
           <a>Material & Tvättråd</a>
         </Link>
       </UnderLinedMenu>
+      {/* <Link href="/index" as="/"> */}
       <Link href="/index" as="/">
         <a>
           <StyledLogo src="/images/LogoTest4.png" alt="logo" />
         </a>
       </Link>
       <UnderLinedMenu>
-        <Link href="/vintagewiki" as="/vintagewiki">
+        {/* <Link href="/vintagewiki" as="/vintagewiki"> */}
+        <Link href="/vintagewiki">
           <a>VintageWiki</a>
         </Link>
-        <Link href="/about" as="/om-vintage-sverige">
+        {/* <Link href="/about" as="/om-vintage-sverige"> */}
+        <Link href="/om-vintage-sverige">
           <a>Om Vintage Sverige</a>
         </Link>
-        <Link href="/login">
+        <Link href="/logga-in">
           <a>Logga in</a>
         </Link>
       </UnderLinedMenu>
