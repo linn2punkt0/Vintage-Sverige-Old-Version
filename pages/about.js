@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../Layout';
 
 const StyledAbout = styled.div``;
 
-const About = props => {
+const About = () => {
   return (
     <StyledAbout>
-      <Layout>
-        <h1>Aboutpage</h1>
-      </Layout>
+      <h2>Här kan du läsa om sidan och de som varit med och skapat den.</h2>
     </StyledAbout>
   );
 };
