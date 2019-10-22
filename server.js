@@ -14,7 +14,17 @@ const handle = app.getRequestHandler();
 
 const firebase = admin.initializeApp(
   {
-    credential: admin.credential.cert(require('./credentials/server'))
+    // credential: admin.credential.cert(require('./credentials/server'))
+    credential: admin.credential.cert([
+      process.env.apiKey,
+      process.env.authDomain,
+      process.env.databaseURL,
+      process.env.projectId,
+      process.env.storageBucket,
+      process.env.messagingSenderId,
+      process.env.appId,
+      process.env.measurementId
+    ])
   },
   'server'
 );
