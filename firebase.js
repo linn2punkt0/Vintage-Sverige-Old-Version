@@ -20,7 +20,7 @@ const {
   measurementId
 } = process.env;
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey,
   authDomain,
   databaseURL,
