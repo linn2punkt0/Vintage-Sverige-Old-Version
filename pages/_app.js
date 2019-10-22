@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'isomorphic-unfetch';
-import clientCredentials from '../credentials/client';
+// import clientCredentials from '../credentials/client';
 import Layout from '../Layout';
 
 export default class MyApp extends App {
